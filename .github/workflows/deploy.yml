@@ -24,8 +24,10 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_ed25519 ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << EOF
             set -e
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd ${{ secrets.VPS_BOT_PATH }}
             git pull origin main
-            /home/ubuntu/.nvm/versions/node/v22.16.0/bin/pnpm install
+            pnpm install
             pm2 restart 0
           EOF
