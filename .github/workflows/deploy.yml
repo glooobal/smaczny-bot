@@ -26,6 +26,6 @@ jobs:
             set -e
             cd ${{ secrets.VPS_BOT_PATH }}
             git pull origin main
-            pnpm install
+            /home/ubuntu/.nvm/versions/node/v22.16.0/bin/pnpm install
             pm2 restart 0
           EOF
