@@ -22,10 +22,11 @@ jobs:
 
       - name: Deploy & Restart Bot
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << EOF
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             set -e
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm use v22.16.0
             cd ${{ secrets.VPS_BOT_PATH }}
             git pull origin main
             pnpm install
