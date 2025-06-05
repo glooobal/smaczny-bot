@@ -132,14 +132,11 @@ export class DiscordClient {
         }
       }
 
-      const rest = new REST().setToken(process.env.DISCORD_TOKEN);
+      const rest = new REST().setToken(process.env.discordToken);
 
-      await rest.put(
-        Routes.applicationCommands(process.env.DISCORD_CLIENT_ID),
-        {
-          body: commands,
-        }
-      );
+      await rest.put(Routes.applicationCommands(process.env.discordClientId), {
+        body: commands,
+      });
     } catch (err) {
       console.error('Error deploying commands:', err);
       process.exit(1);
@@ -151,7 +148,7 @@ export class DiscordClient {
    */
   async connectDatabase() {
     try {
-      await connect(process.env.MONGO_URI);
+      await connect(process.env.mongoUri);
     } catch (err) {
       console.error('Error connecting to mongo database:', err);
       process.exit(1);
@@ -169,6 +166,6 @@ export class DiscordClient {
 
     await this.deployCommands();
 
-    await this.client.login(process.env.DISCORD_TOKEN);
+    await this.client.login(process.env.discordToken);
   }
 }

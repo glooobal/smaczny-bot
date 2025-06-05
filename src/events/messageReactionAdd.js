@@ -1,12 +1,14 @@
-const MESSAGE_ID = process.env.DISCORD_MESSAGE_ID;
+import { config } from '../config.js';
+
+const MESSAGE_ID = config.reactionRole.messageId;
 
 const emojiRoleMap = {
-  '🌃': process.env.DISCORD_ROLE_ID_GDYNIA,
-  '🌇': process.env.DISCORD_ROLE_ID_GDANSK,
-  '🚗': process.env.DISCORD_ROLE_ID_CAR,
-  '🛵': process.env.DISCORD_ROLE_ID_SCOOTER,
-  '🚲': process.env.DISCORD_ROLE_ID_BIKE,
-  '⚡': process.env.DISCORD_ROLE_ID_ELECTRIC,
+  '🌃': config.reactionRole.gdyniaRoleId,
+  '🌇': config.reactionRole.gdanskRoleId,
+  '🚗': config.reactionRole.carRoleId,
+  '🛵': config.reactionRole.scooterRoleId,
+  '🚲': config.reactionRole.bikeRoleId,
+  '⚡': config.reactionRole.electricRoleId,
 };
 
 export default {

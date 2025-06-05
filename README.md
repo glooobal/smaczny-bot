@@ -15,10 +15,10 @@ pnpm install
 3. Create .env file and fill it with your credentials
 
 ```
-  discordToken: ""
-  discordClientId: ""
+  discordToken=""
+  discordClientId=""
 
-  mongoUri: ""
+  mongoUri=""
 ```
 
 4. Start client

@@ -1,5 +1,7 @@
 import { SlashCommandBuilder } from 'discord.js';
 
+import { config } from '../../config.js';
+
 export default {
   data: new SlashCommandBuilder()
     .setName('kontakt')
@@ -7,8 +9,16 @@ export default {
       'Zobacz aktualne opcje kontaktu do naszych ulubionych przełożonych.'
     ),
   async execute(interaction) {
-    await interaction.reply(
-      '**E-mail:**\nGdynia: gdynia@takeaway.com\nGdańsk i Sopot: gdansk@takeaway.com\n\n**Telefon (Telegram):**\n+48 577 700 062 (Tylko pilne sprawy, np. wypadki lub nagłe nieobecności)\n\n**Inne sprawy:** Użyj czatu w aplikacji Scoober'
-    );
+    await interaction.reply(`
+**E-mail:**
+Gdynia: ${config.contact.gdyniaEmail}
+Gdańsk i Sopot: ${config.contact.gdanskEmail}
+
+**Telefon (Telegram):** 
+${config.contact.phoneNumber}
+
+**Inne sprawy:**
+Użyj czatu w aplikacji Scoober
+    `);
   },
 };
