@@ -8,8 +8,8 @@ export default {
   once: true,
   async execute(client) {
     try {
-      // const channel = await client.channels.fetch(CHANNEL_ID);
-      // const message = await channel.messages.fetch(MESSAGE_ID);
+      const channel = await client.channels.fetch(CHANNEL_ID);
+      const message = await channel.messages.fetch(MESSAGE_ID);
 
       console.info(`Client has been logged in as ${client.user.tag}`);
     } catch (err) {
