@@ -12,7 +12,7 @@ git clone https://github.com/glooobal/smaczny-bot
 pnpm install
 ```
 
-3. Create .env file and fill it with your credentials
+3. Rename .exampleEnv to .env file and fill it with your credentials
 
 ```
   discordToken=""
@@ -20,6 +20,8 @@ pnpm install
 
   mongoUri=""
 ```
+
+You can also rename exampleConfig.js to config.js and fill it with your credentials, but this is not mandatory.
 
 4. Start client
 
