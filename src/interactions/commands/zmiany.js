@@ -1,7 +1,5 @@
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
-import { config } from '../../config.js';
-
 export default {
   data: new SlashCommandBuilder()
     .setName('zmiany')
@@ -10,13 +8,13 @@ export default {
     ),
   async execute(interaction) {
     const embedMessage = new EmbedBuilder()
-      .setColor(config.embeds.color)
+      .setColor(interaction.config.embeds.color)
       .setAuthor({
         name: `@${interaction.user.username} - Zmiany`,
         iconURL: interaction.user.avatarURL(),
       })
       .setDescription(
-        `Aby przyjąć, oddać lub wymienić zmianę użyj tego formularza: **[Kliknij tu](${config.forms.shiftChangeUrl})**\n\nMożliwe jest przekazywanie tylko całych zmian!`
+        `Aby przyjąć, oddać lub wymienić zmianę użyj tego formularza: **[Kliknij tu](${interaction.config.forms.shiftChangeUrl})**\n\nMożliwe jest przekazywanie tylko całych zmian!`
       );
 
     await interaction.reply({ embeds: [embedMessage] });

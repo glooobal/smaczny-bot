@@ -12,6 +12,8 @@ import { connect } from 'mongoose';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { config } from './config.js';
+
 import 'dotenv/config';
 
 const {
@@ -38,6 +40,7 @@ export class DiscordClient {
     });
 
     this.client.commands = new Collection();
+    this.client.config = config;
   }
 
   /**

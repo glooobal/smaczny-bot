@@ -1,7 +1,5 @@
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
-import { config } from '../../config.js';
-
 export default {
   data: new SlashCommandBuilder()
     .setName('kontakt')
@@ -10,7 +8,7 @@ export default {
     ),
   async execute(interaction) {
     const embedMessage = new EmbedBuilder()
-      .setColor(config.embeds.color)
+      .setColor(interaction.config.embeds.color)
       .setAuthor({
         name: `@${interaction.user.username} - Kontakt`,
         iconURL: interaction.user.avatarURL(),
@@ -18,17 +16,17 @@ export default {
       .addFields(
         {
           name: 'Gdynia',
-          value: `${config.contact.gdyniaEmail}`,
+          value: `${interaction.config.contact.gdyniaEmail}`,
           inline: true,
         },
         {
           name: 'Gdańsk',
-          value: `${config.contact.gdanskEmail}`,
+          value: `${interaction.config.contact.gdanskEmail}`,
           inline: true,
         },
         {
           name: 'Telefon (Telegram)',
-          value: `${config.contact.phoneNumber}`,
+          value: `${interaction.config.contact.phoneNumber}`,
           inline: true,
         }
       )

@@ -4,8 +4,6 @@ import {
   SlashCommandBuilder,
 } from 'discord.js';
 
-import { config } from '../../config.js';
-
 export default {
   data: new SlashCommandBuilder()
     .setName('bonus')
@@ -16,7 +14,7 @@ export default {
     });
 
     const embedMessage = new EmbedBuilder()
-      .setColor(config.embeds.color)
+      .setColor(interaction.config.embeds.color)
       .setAuthor({
         name: `@${interaction.user.username} - Aktualny bonus`,
         iconURL: interaction.user.avatarURL(),
