@@ -6,13 +6,13 @@ export default {
     .setDescription('Zobacz oficjalny link do zaproszenia na serwer discord.'),
   async execute(interaction) {
     const embedMessage = new EmbedBuilder()
-      .setColor(interaction.config.embeds.color)
+      .setColor(interaction.client.config.embeds.color)
       .setAuthor({
         name: `@${interaction.user.username} - Zaproszenie`,
         iconURL: interaction.user.avatarURL(),
       })
       .setDescription(
-        `Zaproś znajomych pyszniaków używając tego linku: **${interaction.config.discordInvite}**`
+        `Zaproś znajomych pyszniaków używając tego linku: **${interaction.client.config.discordInvite}**`
       );
 
     await interaction.reply({ embeds: [embedMessage] });

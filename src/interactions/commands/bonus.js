@@ -14,7 +14,7 @@ export default {
     });
 
     const embedMessage = new EmbedBuilder()
-      .setColor(interaction.config.embeds.color)
+      .setColor(interaction.client.config.embeds.color)
       .setAuthor({
         name: `@${interaction.user.username} - Aktualny bonus`,
         iconURL: interaction.user.avatarURL(),

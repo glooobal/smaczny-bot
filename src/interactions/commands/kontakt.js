@@ -8,7 +8,7 @@ export default {
     ),
   async execute(interaction) {
     const embedMessage = new EmbedBuilder()
-      .setColor(interaction.config.embeds.color)
+      .setColor(interaction.client.config.embeds.color)
       .setAuthor({
         name: `@${interaction.user.username} - Kontakt`,
         iconURL: interaction.user.avatarURL(),
@@ -16,17 +16,17 @@ export default {
       .addFields(
         {
           name: 'Gdynia',
-          value: `${interaction.config.contact.gdyniaEmail}`,
+          value: `${interaction.client.config.contact.gdyniaEmail}`,
           inline: true,
         },
         {
           name: 'Gdańsk',
-          value: `${interaction.config.contact.gdanskEmail}`,
+          value: `${interaction.client.config.contact.gdanskEmail}`,
           inline: true,
         },
         {
           name: 'Telefon (Telegram)',
-          value: `${interaction.config.contact.phoneNumber}`,
+          value: `${interaction.client.config.contact.phoneNumber}`,
           inline: true,
         }
       )
