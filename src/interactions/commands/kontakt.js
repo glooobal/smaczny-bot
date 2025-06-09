@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from 'discord.js';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 import { config } from '../../config.js';
 
@@ -9,16 +9,31 @@ export default {
       'Zobacz aktualne opcje kontaktu do naszych ulubionych przełożonych.'
     ),
   async execute(interaction) {
-    await interaction.reply(`
-**E-mail:**
-Gdynia: ${config.contact.gdyniaEmail}
-Gdańsk i Sopot: ${config.contact.gdanskEmail}
+    const embedMessage = new EmbedBuilder()
+      .setColor(config.embeds.color)
+      .setAuthor({
+        name: `@${interaction.user.username} - Kontakt`,
+        iconURL: interaction.user.avatarURL(),
+      })
+      .addFields(
+        {
+          name: 'Gdynia',
+          value: `${config.contact.gdyniaEmail}`,
+          inline: true,
+        },
+        {
+          name: 'Gdańsk',
+          value: `${config.contact.gdanskEmail}`,
+          inline: true,
+        },
+        {
+          name: 'Telefon (Telegram)',
+          value: `${config.contact.phoneNumber}`,
+          inline: true,
+        }
+      )
+      .setFooter({ text: 'Inna sprawa? - Użyj czatu w aplikacji Scoober' });
 
-**Telefon (Telegram):** 
-${config.contact.phoneNumber}
-
-**Inne sprawy:**
-Użyj czatu w aplikacji Scoober
-    `);
+    await interaction.reply({ embeds: [embedMessage] });
   },
 };

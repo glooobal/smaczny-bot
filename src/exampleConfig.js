@@ -1,26 +1,30 @@
 export const config = {
-  discordInvite: '',
+  discordInvite: 'string',
+
+  embeds: {
+    color: 'Orange',
+  },
 
   contact: {
-    phoneNumber: '',
-    gdyniaEmail: '',
-    gdanskEmail: '',
+    phoneNumber: 'string',
+    gdyniaEmail: 'string',
+    gdanskEmail: 'string',
   },
 
   forms: {
-    shiftChangeUrl: '',
-    vehicleChangeUrl: '',
-    constantShiftsUrl: '',
+    shiftChangeUrl: 'url',
+    vehicleChangeUrl: 'url',
+    constantShiftsUrl: 'url',
   },
 
   reactionRole: {
-    channelId: '',
-    messageId: '',
-    gdyniaRoleId: '',
-    gdanskRoleId: '',
-    carRoleId: '',
-    scooterRoleId: '',
-    bikeRoleId: '',
-    electricRoleId: '',
+    channelId: 'id',
+    messageId: 'id',
+    gdyniaRoleId: 'id',
+    gdanskRoleId: 'id',
+    carRoleId: 'id',
+    scooterRoleId: 'id',
+    bikeRoleId: 'id',
+    electricRoleId: 'id',
   },
 };
