@@ -12,7 +12,7 @@ export default {
 
     let description = '';
     topUsers.forEach((user, index) => {
-      description += `${medals[index]} <@${user.userId} — ${user.messageCount} wiadomości\n`;
+      description += `${medals[index]} <@${user.userId}> — ${user.messageCount} wiadomości\n`;
     });
 
     const embedMessage = new EmbedBuilder()
