@@ -27,4 +27,8 @@ export const config = {
     bikeRoleId: 'id',
     electricRoleId: 'id',
   },
+
+  ranking: {
+    dailyChannelId: 'id',
+  },
 };

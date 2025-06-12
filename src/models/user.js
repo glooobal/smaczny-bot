@@ -10,7 +10,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  messageCount: {
+  totalMessages: {
+    type: Number,
+    default: 0,
+  },
+  dailyMessages: {
     type: Number,
     default: 0,
   },

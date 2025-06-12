@@ -1,4 +1,4 @@
-import { User } from '../models/user.js';
+import { User } from '../models/User.js';
 
 export default {
   name: 'messageCreate',
@@ -9,13 +9,15 @@ export default {
       const user = await User.findOne({ userId: message.author.id });
 
       if (user) {
-        user.messageCount += 1;
+        user.totalMessages += 1;
+        user.dailyMessages += 1;
         await user.save();
       } else {
         await User.create({
           userId: message.author.id,
           username: message.author.username,
-          messageCount: 1,
+          totalMessages: 1,
+          dailyMessages: 1,
         });
       }
     } catch (err) {
