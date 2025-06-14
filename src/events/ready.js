@@ -52,7 +52,7 @@ export default {
           });
 
           const embedMessage = new EmbedBuilder()
-            .setColor('Grey')
+            .setColor('#3b3b3b')
             .setAuthor({ name: `Ranking wiadomości - ${formattedDate}` })
             .setDescription(description);
 
