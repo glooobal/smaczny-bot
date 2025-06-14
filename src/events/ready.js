@@ -15,9 +15,8 @@ export default {
       const reactionRoleChannel = await client.channels.fetch(
         reactionRoleChannelId
       );
-      const reactionRoleMessage = await reactionRoleChannel.messages.fetch(
-        reactionRoleMessageId
-      );
+
+      await reactionRoleChannel.messages.fetch(reactionRoleMessageId);
 
       new CronJob(
         '59 23 * * *',
@@ -26,21 +25,35 @@ export default {
             dailyRankingChannelId
           );
 
-          const topUsers = await User.find()
-            .sort({ dailyMessages: -1 })
-            .limit(5);
-          const medals = ['🥇', '🥈', '🥉', '🏅', '🏅'];
+          const users = await User.find();
+          const totalMessages = users.reduce(
+            (sum, user) => sum + (user.dailyMessages || 0),
+            0
+          );
 
-          let description = '';
+          const topUsers = users
+            .filter((user) => user.dailyMessages > 0)
+            .sort((a, b) => b.dailyMessages - a.dailyMessages)
+            .slice(0, 5);
+
+          const medals = ['🥇', '🥈', '🥉', '🏅', '🎖'];
+
+          const now = new Date();
+          const formattedDate = now.toLocaleDateString('pl-PL');
+
+          let description = `Dzisiejszego dnia wysłanych zostało **${totalMessages}** wiadomości\n\n**Najlepsi użytkownicy:**\n`;
+
           topUsers.forEach((user, index) => {
-            description += `${medals[index]} <@${user.userId}> — ${user.dailyMessages} wiadomości\n`;
+            const percentage = (
+              (user.dailyMessages / totalMessages) *
+              100
+            ).toFixed(1);
+            description += `${medals[index]} <@${user.userId}> — ${user.dailyMessages} wiadomości (${percentage}%)\n`;
           });
 
           const embedMessage = new EmbedBuilder()
-            .setColor(client.config.embeds.color)
-            .setAuthor({
-              name: `Codzienny ranking wiadomości`,
-            })
+            .setColor('Grey')
+            .setAuthor({ name: `Ranking wiadomości - ${formattedDate}` })
             .setDescription(description);
 
           await dailyRankingChannel.send({ embeds: [embedMessage] });
