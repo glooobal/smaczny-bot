@@ -8,9 +8,9 @@ export default {
     ),
   async execute(interaction) {
     const embedMessage = new EmbedBuilder()
-      .setColor(interaction.client.config.embeds.color)
+      .setColor("Greyple")
       .setAuthor({
-        name: `@${interaction.user.username} - Zmiany`,
+        name: `@${interaction.user.username} - /formularz`,
         iconURL: interaction.user.avatarURL(),
       })
       .setDescription(

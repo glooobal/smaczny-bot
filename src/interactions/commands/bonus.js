@@ -14,11 +14,7 @@ export default {
     });
 
     const embedMessage = new EmbedBuilder()
-      .setColor(interaction.client.config.embeds.color)
-      .setAuthor({
-        name: `@${interaction.user.username} - Aktualny bonus`,
-        iconURL: interaction.user.avatarURL(),
-      })
+      .setColor("Greyple")
       .setImage('attachment://bonus.png');
 
     await interaction.reply({ embeds: [embedMessage], files: [embedFile] });

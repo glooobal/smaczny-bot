@@ -1,14 +1,6 @@
 export const config = {
-  discordInvite: 'string',
-
-  embeds: {
-    color: 'Orange',
-  },
-
   contact: {
     phoneNumber: 'string',
-    gdyniaEmail: 'string',
-    gdanskEmail: 'string',
   },
 
   forms: {
