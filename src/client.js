@@ -165,7 +165,7 @@ export class DiscordClient {
     this.handleEvents();
     this.handleCommands();
 
-    // await this.connectDatabase();
+    await this.connectDatabase();
 
     await this.deployCommands();
 

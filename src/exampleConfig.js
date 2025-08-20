@@ -20,7 +20,6 @@ export const config = {
     electricRoleId: 'id',
   },
 
-  ranking: {
-    dailyChannelId: 'id',
-  },
+  dailyChannelId: 'id',
+  reminderChannelId: 'id',
 };

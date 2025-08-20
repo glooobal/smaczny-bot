@@ -8,24 +8,48 @@ export default {
   once: true,
   async execute(client) {
     try {
-      const reactionRoleChannelId = client.config.reactionRole.channelId;
-      const reactionRoleMessageId = client.config.reactionRole.messageId;
-      const dailyRankingChannelId = client.config.ranking.dailyChannelId;
+      // const reactionRoleChannelId = client.config.reactionRole.channelId;
+      // const reactionRoleMessageId = client.config.reactionRole.messageId;
 
-      const reactionRoleChannel = await client.channels.fetch(
-        reactionRoleChannelId,
+      // const reactionRoleChannel = await client.channels.fetch(
+      //   reactionRoleChannelId,
+      // );
+
+      // await reactionRoleChannel.messages.fetch(reactionRoleMessageId);
+
+      // const dailyRankingChannelId = client.config.dailyChannelId;
+      // const dailyRankingChannel = await client.channels.fetch(
+      //   dailyRankingChannelId,
+      // );
+
+      const reminderChannelId = client.config.reminderChannelId;
+      const reminderChannel = await client.channels.fetch(reminderChannelId);
+
+      /** Availability Remider */
+      new CronJob(
+        '0 12,18 * * 2',
+        async function () {
+          const embedMessage = new EmbedBuilder()
+            .setColor('Greyple')
+            .setAuthor({ name: `Przypomnienie o dostępności` })
+            .setDescription(
+              'Zaznaczcie dostępność na przyszły tydzień do końca dzisiejszego dnia',
+            );
+
+          await reminderChannel.send({
+            content: `<@${client.config.reactionRole.availabilityReminder}>`,
+            embeds: [embedMessage],
+          });
+        },
+        null,
+        true,
+        'Europe/Warsaw',
       );
-
-      await reactionRoleChannel.messages.fetch(reactionRoleMessageId);
 
       /** Daily Messages Summary */
       new CronJob(
         '59 23 * * *',
         async function () {
-          const dailyRankingChannel = await client.channels.fetch(
-            dailyRankingChannelId,
-          );
-
           const users = await User.find();
           const totalMessages = users.reduce(
             (sum, user) => sum + (user.dailyMessages || 0),
@@ -69,10 +93,6 @@ export default {
       new CronJob(
         '59 23 * * 7',
         async function () {
-          const dailyRankingChannel = await client.channels.fetch(
-            dailyRankingChannelId,
-          );
-
           const users = await User.find();
           const totalMessages = users.reduce(
             (sum, user) => sum + (user.weeklyMessages || 0),
@@ -113,10 +133,6 @@ export default {
       new CronJob(
         '59 23 1 * *',
         async function () {
-          const dailyRankingChannel = await client.channels.fetch(
-            dailyRankingChannelId,
-          );
-
           const users = await User.find();
           const totalMessages = users.reduce(
             (sum, user) => sum + (user.monthlyMessages || 0),

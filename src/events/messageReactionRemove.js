@@ -9,6 +9,7 @@ const emojiRoleMap = {
   '🛵': config.reactionRole.scooterRoleId,
   '🚲': config.reactionRole.bikeRoleId,
   '⚡': config.reactionRole.electricRoleId,
+  '🚨': config.reactionRole.availabilityReminder,
 };
 
 export default {
