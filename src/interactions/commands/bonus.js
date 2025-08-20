@@ -14,7 +14,7 @@ export default {
     });
 
     const embedMessage = new EmbedBuilder()
-      .setColor("Greyple")
+      .setColor('Greyple')
       .setImage('attachment://bonus.png');
 
     await interaction.reply({ embeds: [embedMessage], files: [embedFile] });

@@ -13,7 +13,7 @@ export default {
       const dailyRankingChannelId = client.config.ranking.dailyChannelId;
 
       const reactionRoleChannel = await client.channels.fetch(
-        reactionRoleChannelId
+        reactionRoleChannelId,
       );
 
       await reactionRoleChannel.messages.fetch(reactionRoleMessageId);
@@ -23,13 +23,13 @@ export default {
         '59 23 * * *',
         async function () {
           const dailyRankingChannel = await client.channels.fetch(
-            dailyRankingChannelId
+            dailyRankingChannelId,
           );
 
           const users = await User.find();
           const totalMessages = users.reduce(
             (sum, user) => sum + (user.dailyMessages || 0),
-            0
+            0,
           );
 
           const topUsers = users
@@ -62,7 +62,7 @@ export default {
         },
         null,
         true,
-        'Europe/Warsaw'
+        'Europe/Warsaw',
       );
 
       /** Weekly Messages Summary */
@@ -70,13 +70,13 @@ export default {
         '59 23 * * 7',
         async function () {
           const dailyRankingChannel = await client.channels.fetch(
-            dailyRankingChannelId
+            dailyRankingChannelId,
           );
 
           const users = await User.find();
           const totalMessages = users.reduce(
             (sum, user) => sum + (user.weeklyMessages || 0),
-            0
+            0,
           );
 
           const topUsers = users
@@ -106,7 +106,7 @@ export default {
         },
         null,
         true,
-        'Europe/Warsaw'
+        'Europe/Warsaw',
       );
 
       /** Monthly Messages Summary */
@@ -114,13 +114,13 @@ export default {
         '59 23 1 * *',
         async function () {
           const dailyRankingChannel = await client.channels.fetch(
-            dailyRankingChannelId
+            dailyRankingChannelId,
           );
 
           const users = await User.find();
           const totalMessages = users.reduce(
             (sum, user) => sum + (user.monthlyMessages || 0),
-            0
+            0,
           );
 
           const topUsers = users
@@ -150,7 +150,7 @@ export default {
         },
         null,
         true,
-        'Europe/Warsaw'
+        'Europe/Warsaw',
       );
 
       console.info(`Client has been logged in as ${client.user.tag}`);

@@ -4,17 +4,17 @@ export default {
   data: new SlashCommandBuilder()
     .setName('formularz')
     .setDescription(
-      'Zobacz jak teraz wygląda oddawanie i przyjmowanie zmian od innych kurierów.'
+      'Zobacz jak teraz wygląda oddawanie i przyjmowanie zmian od innych kurierów.',
     ),
   async execute(interaction) {
     const embedMessage = new EmbedBuilder()
-      .setColor("Greyple")
+      .setColor('Greyple')
       .setAuthor({
         name: `@${interaction.user.username} - /formularz`,
         iconURL: interaction.user.avatarURL(),
       })
       .setDescription(
-        `Aby przyjąć, oddać lub wymienić zmianę użyj tego formularza: **[Kliknij tu](${interaction.client.config.forms.shiftChangeUrl})**\n\nMożliwe jest przekazywanie tylko całych zmian!`
+        `Aby przyjąć, oddać lub wymienić zmianę użyj tego formularza: **[Kliknij tu](${interaction.client.config.forms.shiftChangeUrl})**\n\nMożliwe jest przekazywanie tylko całych zmian!`,
       );
 
     await interaction.reply({ embeds: [embedMessage] });

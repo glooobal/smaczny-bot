@@ -50,7 +50,7 @@ export class DiscordClient {
     try {
       const eventsPath = join(process.cwd(), 'src', 'events');
       const eventFiles = readdirSync(eventsPath).filter((file) =>
-        file.endsWith('.js')
+        file.endsWith('.js'),
       );
 
       for (const file of eventFiles) {
@@ -83,11 +83,11 @@ export class DiscordClient {
         process.cwd(),
         'src',
         'interactions',
-        'commands'
+        'commands',
       );
 
       const commandFiles = readdirSync(commandsPath).filter((file) =>
-        file.endsWith('.js')
+        file.endsWith('.js'),
       );
 
       for (const file of commandFiles) {
@@ -117,11 +117,11 @@ export class DiscordClient {
         process.cwd(),
         'src',
         'interactions',
-        'commands'
+        'commands',
       );
 
       const commandFiles = readdirSync(commandsPath).filter((file) =>
-        file.endsWith('.js')
+        file.endsWith('.js'),
       );
 
       for (const file of commandFiles) {
@@ -165,7 +165,7 @@ export class DiscordClient {
     this.handleEvents();
     this.handleCommands();
 
-    await this.connectDatabase();
+    // await this.connectDatabase();
 
     await this.deployCommands();
 

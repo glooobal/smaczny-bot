@@ -6,13 +6,13 @@ export default {
     .setDescription('Zobacz jak możesz zgłosić się do stałych zmian.'),
   async execute(interaction) {
     const embedMessage = new EmbedBuilder()
-      .setColor("Greyple")
+      .setColor('Greyple')
       .setAuthor({
         name: `@${interaction.user.username} - /stale-zmiany`,
         iconURL: interaction.user.avatarURL(),
       })
       .setDescription(
-        `Aby zgłosić się do stałych zmian, wypełnij ten formularz: **[Kliknij tu](${interaction.client.config.forms.constantShiftsUrl})**`
+        `Aby zgłosić się do stałych zmian, wypełnij ten formularz: **[Kliknij tu](${interaction.client.config.forms.constantShiftsUrl})**`,
       );
 
     await interaction.reply({ embeds: [embedMessage] });
