@@ -2,7 +2,7 @@ import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName('zmiany')
+    .setName('formularz')
     .setDescription(
       'Zobacz jak teraz wygląda oddawanie i przyjmowanie zmian od innych kurierów.'
     ),

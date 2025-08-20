@@ -13,7 +13,7 @@ export default {
       })
       .setDescription(`Wynagrodzenie za 1-15 dni miesiąca wypłacane jest 25. dnia miesiąca i obejmuje wyłącznie godziny pracy.  
                        \nRozliczenie za zamówienia, napiwki i pozostałe godziny wypłacane jest do 10. dnia kolejnego miesiąca.  
-                       \nNa przykładzie możesz podejrzeć to w **[tym arkuszu](${interaction.client.config.googleSheet})**, patrząc na miesiąc sierpień.
+                       \nNa przykładzie możesz podejrzeć to w **[tym arkuszu](${interaction.client.config.googleSheet})**.
       `);
 
     await interaction.reply({ embeds: [embedMessage] });

@@ -10,13 +10,18 @@ export default {
 
       if (user) {
         user.totalMessages += 1;
+        user.monthlyMessages += 1;
+        user.weeklyMessages += 1;
         user.dailyMessages += 1;
+
         await user.save();
       } else {
         await User.create({
           userId: message.author.id,
           username: message.author.username,
           totalMessages: 1,
+          monthlyMessages: 1,
+          weeklyMessages: 1,
           dailyMessages: 1,
         });
       }
