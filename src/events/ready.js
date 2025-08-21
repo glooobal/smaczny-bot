@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { CronJob } from 'cron';
 import { EmbedBuilder } from 'discord.js';
 
@@ -8,22 +9,67 @@ export default {
   once: true,
   async execute(client) {
     try {
-      // const reactionRoleChannelId = client.config.reactionRole.channelId;
-      // const reactionRoleMessageId = client.config.reactionRole.messageId;
+      const [
+        reactionRoleChannel,
+        gdanskShiftsChannel,
+        gdyniaShiftsChannel,
+        reminderChannel,
+        dailyRankingChannel,
+      ] = await Promise.all([
+        client.channels.fetch(client.config.reactionRole.channelId),
+        client.channels.fetch(client.config.gdanskShiftsChannelId),
+        client.channels.fetch(client.config.gdyniaShiftsChannelId),
+        client.channels.fetch(client.config.reminderChannelId),
+        client.channels.fetch(client.config.dailyChannelId),
+      ]);
 
-      // const reactionRoleChannel = await client.channels.fetch(
-      //   reactionRoleChannelId,
-      // );
+      await reactionRoleChannel.messages.fetch(
+        client.config.reactionRole.messageId,
+      );
 
-      // await reactionRoleChannel.messages.fetch(reactionRoleMessageId);
+      new CronJob(
+        '*/1 * * * *',
+        async function () {
+          const res = await axios.get(client.config.shiftsApiUrl);
+          const shifts = await res.json();
 
-      // const dailyRankingChannelId = client.config.dailyChannelId;
-      // const dailyRankingChannel = await client.channels.fetch(
-      //   dailyRankingChannelId,
-      // );
+          const newShifts = shifts.filter(
+            (s) =>
+              !lastShifts.some(
+                (ls) =>
+                  ls.date === s.date &&
+                  ls.startTime === s.startTime &&
+                  ls.endTime === s.endTime &&
+                  ls.city === s.city,
+              ),
+          );
 
-      const reminderChannelId = client.config.reminderChannelId;
-      const reminderChannel = await client.channels.fetch(reminderChannelId);
+          if (newShifts.length > 0) {
+            for (const shift of newShifts) {
+              const shiftEmbed = new EmbedBuilder()
+                .setColor('Greyple')
+                .setAuthor({
+                  name: `Nowa zmiana w formularzu! - ${shift.city}`,
+                })
+                .setDescription(
+                  `Data: ${shift.date}\nGodziny: ${shift.startTime} - ${shift.endTime}`,
+                );
+
+              switch (shift.city) {
+                case 'Gdańsk':
+                  await gdanskShiftsChannel.send({ embeds: [shiftEmbed] });
+                case 'Gdynia':
+                  await gdyniaShiftsChannel.send({ embeds: [shiftEmbed] });
+              }
+            }
+          }
+
+          lastShifts = shifts;
+        },
+        null,
+        true,
+        'Europe/Warsaw',
+      );
 
       /** Availability Remider */
       new CronJob(

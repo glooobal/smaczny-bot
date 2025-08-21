@@ -9,6 +9,10 @@ export const config = {
     constantShiftsUrl: 'url',
   },
 
+  googleSheet: 'url',
+
+  shiftsApiUrl: 'url',
+
   reactionRole: {
     channelId: 'id',
     messageId: 'id',
@@ -22,4 +26,6 @@ export const config = {
 
   dailyChannelId: 'id',
   reminderChannelId: 'id',
+  gdanskShiftsChannelId: 'id',
+  gdyniaShiftsChannelId: 'id',
 };
