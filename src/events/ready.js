@@ -4,6 +4,8 @@ import { EmbedBuilder } from 'discord.js';
 
 import { User } from '../models/User.js';
 
+let lastShifts = [];
+
 export default {
   name: 'ready',
   once: true,
@@ -31,7 +33,7 @@ export default {
         '*/1 * * * *',
         async function () {
           const res = await axios.get(client.config.shiftsApiUrl);
-          const shifts = await res.json();
+          const shifts = res.data;
 
           const newShifts = shifts.filter(
             (s) =>
@@ -58,8 +60,10 @@ export default {
               switch (shift.city) {
                 case 'Gdańsk':
                   await gdanskShiftsChannel.send({ embeds: [shiftEmbed] });
+                  break;
                 case 'Gdynia':
                   await gdyniaShiftsChannel.send({ embeds: [shiftEmbed] });
+                  break;
               }
             }
           }
