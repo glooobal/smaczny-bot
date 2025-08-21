@@ -1,14 +1,6 @@
 export const config = {
-  discordInvite: 'string',
-
-  embeds: {
-    color: 'Orange',
-  },
-
   contact: {
     phoneNumber: 'string',
-    gdyniaEmail: 'string',
-    gdanskEmail: 'string',
   },
 
   forms: {
@@ -16,6 +8,10 @@ export const config = {
     vehicleChangeUrl: 'url',
     constantShiftsUrl: 'url',
   },
+
+  googleSheet: 'url',
+
+  shiftsApiUrl: 'url',
 
   reactionRole: {
     channelId: 'id',
@@ -28,7 +24,8 @@ export const config = {
     electricRoleId: 'id',
   },
 
-  ranking: {
-    dailyChannelId: 'id',
-  },
+  dailyChannelId: 'id',
+  reminderChannelId: 'id',
+  gdanskShiftsChannelId: 'id',
+  gdyniaShiftsChannelId: 'id',
 };

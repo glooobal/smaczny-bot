@@ -14,6 +14,14 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  monthlyMessages: {
+    type: Number,
+    default: 0,
+  },
+  weeklyMessages: {
+    type: Number,
+    default: 0,
+  },
   dailyMessages: {
     type: Number,
     default: 0,

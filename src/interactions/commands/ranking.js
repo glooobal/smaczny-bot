@@ -11,7 +11,7 @@ export default {
     const users = await User.find();
     const totalMessages = users.reduce(
       (sum, user) => sum + (user.totalMessages || 0),
-      0
+      0,
     );
 
     const topUsers = users
@@ -25,13 +25,13 @@ export default {
 
     topUsers.forEach((user, index) => {
       const percentage = ((user.totalMessages / totalMessages) * 100).toFixed(
-        1
+        1,
       );
       description += `${medals[index]} <@${user.userId}> — ${user.totalMessages} wiadomości (${percentage}%)\n`;
     });
 
     const embedMessage = new EmbedBuilder()
-      .setColor('#3b3b3b')
+      .setColor('Grayple')
       .setAuthor({ name: `Ranking wszystkich wiadomości` })
       .setDescription(description);
 
