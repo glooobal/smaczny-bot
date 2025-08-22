@@ -3,7 +3,7 @@ import { EmbedBuilder } from 'discord.js';
 
 import { client } from '../../app.js';
 
-export function setAvailabilityReminder() {
+export async function setAvailabilityReminder() {
   new CronJob(
     '0 12,18 * * 2',
     async function () {

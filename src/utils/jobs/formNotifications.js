@@ -6,7 +6,7 @@ import { client } from '../../app.js';
 
 let lastShifts = [];
 
-export function setFormNotifications() {
+export async function setFormNotifications() {
   new CronJob(
     '*/1 * * * *',
     async function () {
