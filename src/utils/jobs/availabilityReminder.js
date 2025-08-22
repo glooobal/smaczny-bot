@@ -1,13 +1,11 @@
 import { CronJob } from 'cron';
 import { EmbedBuilder } from 'discord.js';
 
-import { client } from '../../app.js';
-
-export async function setAvailabilityReminder() {
+export async function setAvailabilityReminder(client) {
   new CronJob(
     '0 12,18 * * 2',
     async function () {
-      const reminderChannel = client.channels.fetch(
+      const reminderChannel = await client.channels.fetch(
         client.config.channels.reminderChannelId,
       );
 

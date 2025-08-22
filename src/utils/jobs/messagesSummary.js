@@ -4,7 +4,7 @@ import { EmbedBuilder } from 'discord.js';
 import { User } from '../../models/User.js';
 import { client } from '../../app.js';
 
-async function createSummaryJob({ cron, field, resetLabel, title }) {
+async function createSummaryJob({ cron, field, resetLabel, title, client }) {
   return new CronJob(
     cron,
     async function () {
@@ -45,12 +45,13 @@ async function createSummaryJob({ cron, field, resetLabel, title }) {
   );
 }
 
-export async function setMessagesSummary() {
+export async function setMessagesSummary(client) {
   await createSummaryJob({
     cron: '59 23 * * *',
     field: 'dailyMessages',
     resetLabel: 'Dzisiejszego dnia',
     title: `Ranking wiadomości - ${new Date().toLocaleDateString('pl-PL')}`,
+    client: client
   });
 
   await createSummaryJob({
@@ -58,6 +59,7 @@ export async function setMessagesSummary() {
     field: 'weeklyMessages',
     resetLabel: 'Tego tygodnia',
     title: 'Ranking wiadomości tygodnia',
+    client: client
   });
 
   await createSummaryJob({
@@ -65,5 +67,6 @@ export async function setMessagesSummary() {
     field: 'monthlyMessages',
     resetLabel: 'Tego miesiąca',
     title: 'Ranking wiadomości miesiąca',
+    client: client
   });
 }

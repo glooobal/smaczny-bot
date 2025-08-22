@@ -7,11 +7,11 @@ export default {
   once: true,
   async execute(client) {
     try {
-      await setAvailabilityReminder();
-      await setMessagesSummary();
-      await setFormNotifications();
+      await setAvailabilityReminder(client);
+      await setMessagesSummary(client);
+      await setFormNotifications(client);
 
-      const reactionRoleChannel = client.channels.fetch(
+      const reactionRoleChannel = await client.channels.fetch(
         client.config.channels.reactionRoleChannelId,
       );
 
