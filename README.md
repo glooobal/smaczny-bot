@@ -21,13 +21,27 @@ pnpm install
   mongoUri=""
 ```
 
-You can also rename exampleConfig.js to config.js and fill it with your credentials, but this is not mandatory.
+Also rename exampleConfig.js to config.js and fill it with your credentials
 
-4. Start client
+4. Deploy global commands
+
+```
+pnpm run deploy
+```
+
+5. Start client
 
 ```
 pnpm run start
 ```
+
+## Roadmap
+
+[ ] Satisfying interaction styles
+[X] Notifications about new shifts from form 
+[ ] Automatic google shifts form submiting
+
+📊 statistics systems are from other project [@nuntius](https://github.com/glooobal/nuntius)
 
 ## Contributing
 
