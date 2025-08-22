@@ -52,6 +52,11 @@ export default {
           value: `${weather.feelsLike}°C`,
           inline: true,
         },
+        {
+          name: '\u200B',
+          value: '\u200B',
+          inline: true,
+        },
         { name: '🌬️ Wiatr', value: `${weather.wind} km/h`, inline: true },
         { name: '💧 Wilgotność', value: `${weather.humidity}%`, inline: true },
       );
