@@ -35,11 +35,11 @@ export default {
     else if (weather.rain && weather.snow)
       embedDescription = `Będzie padać śnieg i deszcz (🌧️ ${weather.rain} mm, ☃️ ${weather.snow} cm)`;
     else if (!weather.rain || !weather.snow)
-      embedDescription = 'Nie są prognozowane żadne opady ⛅';
+      embedDescription = 'Nie są prognozowane żadne opady';
 
     const embedMessage = new EmbedBuilder()
       .setColor(embedColor)
-      .setAuthor({ name: `Pogoda - ${cityName}` })
+      .setAuthor({ name: `Aktualna pogoda - ${cityName}` })
       .setDescription(embedDescription)
       .addFields(
         {
@@ -52,8 +52,8 @@ export default {
           value: `${weather.feelsLike}°C`,
           inline: true,
         },
-        { name: '🌬️ Wiatr', value: `${weather.wind} km/h` },
-        { name: '💧 Wilgotność', value: `${weather.humidity}%` },
+        { name: '🌬️ Wiatr', value: `${weather.wind} km/h`, inline: true },
+        { name: '💧 Wilgotność', value: `${weather.humidity}%`, inline: true },
       );
 
     await interaction.reply({ embeds: [embedMessage] });
