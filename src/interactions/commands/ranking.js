@@ -31,7 +31,7 @@ export default {
     });
 
     const embedMessage = new EmbedBuilder()
-      .setColor('Grayple')
+      .setColor('Greyple')
       .setAuthor({ name: `Ranking wszystkich wiadomości` })
       .setDescription(description);
 

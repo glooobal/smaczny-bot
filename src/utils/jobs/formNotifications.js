@@ -2,6 +2,8 @@ import axios from 'axios';
 import { CronJob } from 'cron';
 import { EmbedBuilder } from 'discord.js';
 
+import { client } from '../../app.js';
+
 let lastShifts = [];
 
 export function setFormNotifications() {
