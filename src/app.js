@@ -1,5 +1,5 @@
 import { DiscordClient } from './client.js';
 
-const client = new DiscordClient();
+export const client = new DiscordClient();
 
 client.init();

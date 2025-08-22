@@ -24,7 +24,7 @@ export const config = {
     electricRoleId: 'id',
   },
 
-  dailyChannelId: 'id',
+  summaryChannelId: 'id',
   reminderChannelId: 'id',
   gdanskShiftsChannelId: 'id',
   gdyniaShiftsChannelId: 'id',
