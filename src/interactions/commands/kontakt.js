@@ -12,7 +12,7 @@ export default {
         iconURL: interaction.user.avatarURL(),
       })
       .setDescription(
-        `Możesz napisać w aplikacji Telegram: \`${interaction.client.config.contact.phoneNumber}\`\n\n` +
+        `Możesz napisać w aplikacji Telegram: \`${interaction.client.config.phoneNumber}\`\n\n` +
           `lub jak zawsze napisać w aplikacji Scoober`,
       );
 

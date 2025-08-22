@@ -12,7 +12,7 @@ export default {
         iconURL: interaction.user.avatarURL(),
       })
       .setDescription(
-        `Aby zmienić pojazd, którym się poruszasz, wypełnij ten formularz: **[Kliknij tu](${interaction.client.config.forms.vehicleChangeUrl})**`,
+        `Aby zmienić pojazd, którym się poruszasz, wypełnij ten formularz: **[Kliknij tu](${interaction.client.config.vehicleChangeUrl})**`,
       );
 
     await interaction.reply({ embeds: [embedMessage] });

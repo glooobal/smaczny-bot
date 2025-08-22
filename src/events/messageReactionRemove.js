@@ -1,15 +1,15 @@
 import { config } from '../config.js';
 
-const MESSAGE_ID = config.reactionRole.messageId;
+const messageId = config.messages.reactionRoleMessageId;
 
 const emojiRoleMap = {
-  '🌃': config.reactionRole.gdyniaRoleId,
-  '🌇': config.reactionRole.gdanskRoleId,
-  '🚗': config.reactionRole.carRoleId,
-  '🛵': config.reactionRole.scooterRoleId,
-  '🚲': config.reactionRole.bikeRoleId,
-  '⚡': config.reactionRole.electricRoleId,
-  '🚨': config.reactionRole.availabilityReminder,
+  '🌃': config.roles.gdyniaRoleId,
+  '🌇': config.roles.gdanskRoleId,
+  '🚗': config.roles.carRoleId,
+  '🛵': config.roles.scooterRoleId,
+  '🚲': config.roles.bikeRoleId,
+  '⚡': config.roles.electricRoleId,
+  '🚨': config.roles.availabilityReminderRoleId,
 };
 
 export default {
@@ -17,7 +17,7 @@ export default {
   async execute(reaction, user) {
     if (user.bot) return;
     if (reaction.partial) await reaction.fetch();
-    if (reaction.message.id !== MESSAGE_ID) return;
+    if (reaction.message.id !== messageId) return;
 
     const roleId = emojiRoleMap[reaction.emoji.name];
     if (!roleId) return;

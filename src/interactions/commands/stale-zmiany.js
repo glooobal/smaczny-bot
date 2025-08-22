@@ -12,7 +12,7 @@ export default {
         iconURL: interaction.user.avatarURL(),
       })
       .setDescription(
-        `Aby zgłosić się do stałych zmian, wypełnij ten formularz: **[Kliknij tu](${interaction.client.config.forms.constantShiftsUrl})**`,
+        `Aby zgłosić się do stałych zmian, wypełnij ten formularz: **[Kliknij tu](${interaction.client.config.constantShiftsUrl})**`,
       );
 
     await interaction.reply({ embeds: [embedMessage] });

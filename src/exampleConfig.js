@@ -1,31 +1,33 @@
 export const config = {
-  contact: {
-    phoneNumber: 'string',
+  phoneNumber: 'string',
+  shiftChangeUrl: 'url',
+  vehicleChangeUrl: 'url',
+  constantShiftsUrl: 'url',
+  googleSheetUrl: 'url',
+
+  apis: {
+    shiftsUrl: 'url',
   },
 
-  forms: {
-    shiftChangeUrl: 'url',
-    vehicleChangeUrl: 'url',
-    constantShiftsUrl: 'url',
-  },
-
-  googleSheet: 'url',
-
-  shiftsApiUrl: 'url',
-
-  reactionRole: {
-    channelId: 'id',
-    messageId: 'id',
+  roles: {
     gdyniaRoleId: 'id',
     gdanskRoleId: 'id',
     carRoleId: 'id',
     scooterRoleId: 'id',
     bikeRoleId: 'id',
     electricRoleId: 'id',
+    availabilityReminderRoleId: 'id',
   },
 
-  summaryChannelId: 'id',
-  reminderChannelId: 'id',
-  gdanskShiftsChannelId: 'id',
-  gdyniaShiftsChannelId: 'id',
+  channels: {
+    reactionRoleChannelId: 'id',
+    summaryChannelId: 'id',
+    reminderChannelId: 'id',
+    gdanskShiftsChannelId: 'id',
+    gdyniaShiftsChannelId: 'id',
+  },
+
+  messages: {
+    reactionRoleMessageId: 'id',
+  },
 };

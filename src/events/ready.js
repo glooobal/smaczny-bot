@@ -11,14 +11,12 @@ export default {
       setMessagesSummary();
       setFormNotifications();
 
-      const [
-        reactionRoleChannel,
-      ] = await Promise.all([
-        client.channels.fetch(client.config.reactionRole.channelId),
-      ]);
+      const reactionRoleChannel = client.channels.fetch(
+        client.config.channels.reactionRoleChannelId,
+      );
 
       await reactionRoleChannel.messages.fetch(
-        client.config.reactionRole.messageId,
+        client.config.messages.reactionRoleMessageId,
       );
 
       console.info(`Client has been logged in as ${client.user.tag}`);

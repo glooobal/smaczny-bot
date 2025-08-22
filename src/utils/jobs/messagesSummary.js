@@ -1,8 +1,8 @@
-import { CronJob } from "cron";
-import { EmbedBuilder } from "discord.js";
+import { CronJob } from 'cron';
+import { EmbedBuilder } from 'discord.js';
 
-import { User } from "../../models/User.js";
-import { client } from "../../app.js";
+import { User } from '../../models/User.js';
+import { client } from '../../app.js';
 
 function createSummaryJob({ cron, field, resetLabel, title }) {
   return new CronJob(
@@ -11,7 +11,7 @@ function createSummaryJob({ cron, field, resetLabel, title }) {
       const users = await User.find();
       const totalMessages = users.reduce(
         (sum, user) => sum + (user[field] || 0),
-        0
+        0,
       );
 
       const topUsers = users
@@ -19,7 +19,7 @@ function createSummaryJob({ cron, field, resetLabel, title }) {
         .sort((a, b) => b[field] - a[field])
         .slice(0, 5);
 
-      const medals = ["🥇", "🥈", "🥉", "🏅", "🎖"];
+      const medals = ['🥇', '🥈', '🥉', '🏅', '🎖'];
       let description = `${resetLabel} wysłanych zostało **${totalMessages}** wiadomości\n\n**Najlepsi użytkownicy:**\n`;
 
       topUsers.forEach((user, index) => {
@@ -28,40 +28,42 @@ function createSummaryJob({ cron, field, resetLabel, title }) {
       });
 
       const embedMessage = new EmbedBuilder()
-        .setColor("Greyple")
+        .setColor('Greyple')
         .setAuthor({ name: title })
         .setDescription(description);
 
-      const summaryChannel = await client.channels.fetch(client.config.summaryChannelId);
+      const summaryChannel = await client.channels.fetch(
+        client.config.channels.summaryChannelId,
+      );
       await summaryChannel.send({ embeds: [embedMessage] });
 
       await User.updateMany({}, { $set: { [field]: 0 } });
     },
     null,
     true,
-    "Europe/Warsaw"
+    'Europe/Warsaw',
   );
 }
 
 export function setMessagesSummary() {
   createSummaryJob({
-    cron: "59 23 * * *",
-    field: "dailyMessages",
-    resetLabel: "Dzisiejszego dnia",
-    title: `Ranking wiadomości - ${new Date().toLocaleDateString("pl-PL")}`
+    cron: '59 23 * * *',
+    field: 'dailyMessages',
+    resetLabel: 'Dzisiejszego dnia',
+    title: `Ranking wiadomości - ${new Date().toLocaleDateString('pl-PL')}`,
   });
 
   createSummaryJob({
-    cron: "59 23 * * 7",
-    field: "weeklyMessages",
-    resetLabel: "Tego tygodnia",
-    title: "Ranking wiadomości tygodnia"
+    cron: '59 23 * * 7',
+    field: 'weeklyMessages',
+    resetLabel: 'Tego tygodnia',
+    title: 'Ranking wiadomości tygodnia',
   });
 
   createSummaryJob({
-    cron: "01 00 1 * *",
-    field: "monthlyMessages",
-    resetLabel: "Tego miesiąca",
-    title: "Ranking wiadomości miesiąca"
+    cron: '01 00 1 * *',
+    field: 'monthlyMessages',
+    resetLabel: 'Tego miesiąca',
+    title: 'Ranking wiadomości miesiąca',
   });
 }
