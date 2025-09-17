@@ -9,3 +9,5 @@
 [ ] suppi & tradler support reminders
 [ ] payout reminders maybe?
 [ ] unit tests (need to learn them)
+
+// fix: monthly and weekly messages ranking

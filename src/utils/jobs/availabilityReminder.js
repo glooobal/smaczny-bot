@@ -17,7 +17,7 @@ export async function setAvailabilityReminder(client) {
         );
 
       await reminderChannel.send({
-        content: `<@${client.config.roles.availabilityReminderRoleId}>`,
+        content: `<@&${client.config.roles.availabilityReminderRoleId}>`,
         embeds: [embedMessage],
       });
     },

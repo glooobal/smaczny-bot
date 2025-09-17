@@ -5,8 +5,9 @@ export const config = {
   constantShiftsUrl: 'url',
   googleSheetUrl: 'url',
 
-  apis: {
+  api: {
     shiftsUrl: 'url',
+    weatherUrl: 'url',
   },
 
   roles: {
@@ -16,7 +17,7 @@ export const config = {
     scooterRoleId: 'id',
     bikeRoleId: 'id',
     electricRoleId: 'id',
-    availabilityReminderRoleId: 'id',
+    availabilityReminderRoleId: 'id'
   },
 
   channels: {
@@ -29,5 +30,6 @@ export const config = {
 
   messages: {
     reactionRoleMessageId: 'id',
-  },
+  }
 };
+

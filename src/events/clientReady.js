@@ -3,7 +3,7 @@ import { setMessagesSummary } from '../utils/jobs/messagesSummary.js';
 import { setFormNotifications } from '../utils/jobs/formNotifications.js';
 
 export default {
-  name: 'ready',
+  name: 'clientReady',
   once: true,
   async execute(client) {
     try {
