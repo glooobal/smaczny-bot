@@ -1,4 +1,5 @@
 export const config = {
+  guildId: 'id',
   phoneNumber: 'string',
   shiftChangeUrl: 'url',
   vehicleChangeUrl: 'url',

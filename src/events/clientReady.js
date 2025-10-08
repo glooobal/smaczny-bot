@@ -19,6 +19,9 @@ export default {
         client.config.messages.reactionRoleMessageId,
       );
 
+      const mainGuild = client.guilds.cache.get(client.config.guildId);
+      await client.user.setActivity(`${mainGuild.memberCount} kurierów 🛸`);
+
       console.info(`Client has been logged in as ${client.user.tag}`);
     } catch (err) {
       console.error('Failed to load discord client', err);
