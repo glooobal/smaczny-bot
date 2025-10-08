@@ -1,15 +1,6 @@
 export const config = {
   guildId: 'id',
-  phoneNumber: 'string',
-  shiftChangeUrl: 'url',
-  vehicleChangeUrl: 'url',
-  constantShiftsUrl: 'url',
-  googleSheetUrl: 'url',
-
-  api: {
-    shiftsUrl: 'url',
-    weatherUrl: 'url',
-  },
+  shiftsApiUrl: 'url',
 
   roles: {
     gdyniaRoleId: 'id',

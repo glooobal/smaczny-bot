@@ -35,14 +35,6 @@ pnpm run deploy
 pnpm run start
 ```
 
-## Roadmap
-
-[ ] Satisfying interaction styles
-[X] Notifications about new shifts from form 
-[ ] Automatic google shifts form submiting
-
-📊 statistics systems are from other project [@nuntius](https://github.com/glooobal/nuntius)
-
 ## Contributing
 
 To contribute, simply fork this project and create a pull request with your changes. Whether it's a new feature, bug fix, or documentation improvement, we appreciate all contributions. Thank you for your interest in helping to make this project even better!
