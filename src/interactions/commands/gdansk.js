@@ -18,9 +18,12 @@ export default {
           description += `Data: ${shift.date} Godziny: ${shift.startTime} - ${shift.endTime}\n`;
         }
       }
+      if (description === '') {
+        description = 'Brak wolnych zmian do wzięcia';
+      }
     } else {
-      description = 'Brak wolnych zmian do wzięcia'
-    };
+      description = 'Brak wolnych zmian do wzięcia';
+    }
 
     const embedMessage = new EmbedBuilder()
       .setColor('Greyple')
