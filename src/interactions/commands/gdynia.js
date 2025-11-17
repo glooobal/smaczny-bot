@@ -26,6 +26,6 @@ export default {
       .setAuthor({ name: `Zmiany w formularzu - Gdynia` })
       .setDescription(description);
 
-    await interaction.reply({ embeds: [embedMessage], ephemeral: true  });
+    await interaction.reply({ embeds: [embedMessage], flags: MessageFlags.Ephemeral });
   },
 };
