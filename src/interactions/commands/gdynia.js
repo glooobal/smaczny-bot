@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { EmbedBuilder, MessageFlags, SlashCommandBuilder } from 'discord.js';
 
 export default {
   data: new SlashCommandBuilder()
