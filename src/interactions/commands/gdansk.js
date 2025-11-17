@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 export default {
