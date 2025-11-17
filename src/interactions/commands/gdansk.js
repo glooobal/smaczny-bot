@@ -10,7 +10,7 @@ export default {
     const res = await axios.get(interaction.client.config.apis.shiftsUrl);
     const shifts = res.data;
 
-    let description;
+    let description = '';
 
     if (shifts.length > 0) {
       for (const shift of shifts) {
